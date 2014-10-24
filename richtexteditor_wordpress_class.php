@@ -1,14 +1,14 @@
-<?php
+<?php 
 
 /**
  * Including wordpress
- */
+ */ 
 require_once ('richtexteditor/include_rte.php');
 class richtexteditor_wordpress_class {
 	private static $instance;
 	public $plugin_path = "";
 	public $plugin_version = "1.0";
-
+	
 	public static function get_instance()
 	{
 		if (!isset(self::$instance))
@@ -19,7 +19,7 @@ class richtexteditor_wordpress_class {
 
 		return self::$instance;
 	}
-
+	
 	public function __construct()
 	{
 		if (DEFINED('WP_PLUGIN_URL')) {
@@ -34,18 +34,18 @@ class richtexteditor_wordpress_class {
 			$this->plugin_path = str_replace('http:', 'https:', $this->plugin_path);
 		}
 		define('RTEEDITOR_PLUGIN_URL', $this->plugin_path);
-
+		
 		if (defined('WP_DEBUG') && WP_DEBUG == true)
 		{
 			add_action('init', array($this, 'error_reporting'));
 		}
-
+		
 		if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['saved']) && $_GET['saved'] == '1')
 		{
 			$this->update_options($_POST);
 		}
 	}
-
+	
 	public function add_option_page()
 	{
 		add_menu_page('RichTextEditor Settings', 'RichTextEditor', 'administrator', 'rte_settings', array(&$this, 'rte_overview'), $this->plugin_path . 'menuicon.gif');
@@ -57,13 +57,13 @@ class richtexteditor_wordpress_class {
 	 */
 	function AddOptionPage(){
 		add_options_page( FV_RTE_NAME, FV_RTE_NAME, 'activate_plugins', 'rte_editor', array( &$this, 'OptionsMenuPage' ) );
-
-
+		
+		
 	}
 	public function rte_overview() {
 		$rte = new RichTextEditor();
 		echo "<div style=\"margin-right:20px;\">\n";
-
+		
 		echo "<div class=\"metabox-holder\" id=\"Control_RTE_OverView\">
 			<div class=\"postbox\">
 				<h3>RichTextEditor</h3>
@@ -74,17 +74,17 @@ class richtexteditor_wordpress_class {
 					<tr><th scope=\"row\">Plugin Version</th><td>".$this->plugin_version."</td></tr>
 					<tr><th scope=\"row\" valign=\"top\"><b>About RichTextEditor</b></th>
 						<td>
-							Rich Text Editor for WordPress is by far the fastest, cleanest, most powerful wysiwyg content editor. It replaces default WordPress editor with a more advanced wysiwyg editor.
+							Rich Text Editor for WordPress is by far the fastest, cleanest, most powerful wysiwyg content editor. It replaces default WordPress editor with a more advanced wysiwyg editor. 
 						</td>
 					</tr>
 				</table>
 			</div>
 		</div>
 		";
-
+		
 		echo "</div>\n";
 	}
-
+	
 	public function rte_advance_page()
 	{
 		echo "<div style=\"margin-right:20px;\">";
@@ -133,7 +133,7 @@ class richtexteditor_wordpress_class {
 						<td scope=\"row\"><label for=\"RTE_TemplatePath\">Template Path:</label></td>
 						<td><input type=\"text\" name=\"RTE_TemplatePath\" id=\"RTE_DocumentPath\" value=\"".get_option('RTE_TemplatePath')."\"/></td>
 					</tr>
-
+					
 					<tr>
 						<td colspan=\"2\">
 							<input type=\"hidden\" name=\"changes_saved\" value=\"1\">
@@ -145,14 +145,14 @@ class richtexteditor_wordpress_class {
 				</form>
 			</div>
 		</div>";
-
-		echo "<script type=\"text/javascript\">
+		
+		echo "<script type=\"text/javascript\">				
 				document.getElementById('RTE_TextDirection').value='".get_option('RTE_TextDirection')."'||'';
-
+				
 			</script>";
 		echo "</div>";
 	}
-
+	
 	public function rte_option_page() {
 		echo "<div style=\"margin-right:20px;\">";
 		if (isset($_GET['saved']))
@@ -320,23 +320,23 @@ class richtexteditor_wordpress_class {
 				</form>
 			</div>
 		</div>";
-
-		echo "<script type=\"text/javascript\">
+		
+		echo "<script type=\"text/javascript\">				
 				document.getElementById('RTE_Admin_Skin').value='".get_option('RTE_Admin_Skin')."'||'';
-				document.getElementById('RTE_Admin_Toolbar').value='".get_option('RTE_Admin_Toolbar')."'||'';
-				document.getElementById('RTE_Site_UseRTE').checked = ('".get_option('RTE_Site_UseRTE')."'||'')==''?false:true;
+				document.getElementById('RTE_Admin_Toolbar').value='".get_option('RTE_Admin_Toolbar')."'||'';	
+				document.getElementById('RTE_Site_UseRTE').checked = ('".get_option('RTE_Site_UseRTE')."'||'')==''?false:true;			
 				document.getElementById('RTE_Site_Skin').value='".get_option('RTE_Site_Skin')."'||'';
 				document.getElementById('RTE_Site_Toolbar').value='".get_option('RTE_Site_Toolbar')."'||'';
 				document.getElementById('RTE_Language').value='".get_option('RTE_Language')."'||'';
 				document.getElementById('RTE_EnterKeyTag').value='".get_option('RTE_EnterKeyTag')."'||'';
 				document.getElementById('RTE_UrlType').value='".get_option('RTE_UrlType')."'||'';
-
+				
 			</script>";
 		echo "</div>";
 	}
-
+	
 	public function add_post_editor() {
-
+		
 		//$this->remove_tinymce();
 		if (has_filter('admin_print_footer_scripts', 'wp_tiny_mce') || has_filter('before_wp_tiny_mce', 'wp_print_editor_js') || has_filter('after_wp_tiny_mce', 'wp_preload_dialogs')) {
 			remove_filter('admin_print_footer_scripts', 'wp_tiny_mce', 25);
@@ -349,11 +349,11 @@ class richtexteditor_wordpress_class {
 		if ( is_plugin_active('w3-total-cache/w3-total-cache.php') ) {
 			define('DONOTMINIFY', true);
 		}
-		echo "<style type='text/css'>.tbcontrol img {margin:0px!important;}
+		echo "<style type='text/css'>.tbcontrol img {margin:0px!important;} 
 		.jsml_textbox textarea{padding:0px!important;border-radius:0px!important;-webkit-border-radius:0px!important;width:100%!important; height:100%!important;}</style>\n";
-
-		echo "<script type='text/javascript' src=\"".$this->plugin_path . "includes/rte.post.js?t=RTE"."\"></script>\n";
-
+	
+		echo "<script type='text/javascript' src=\"".$this->plugin_path . "includes/rte.post.js?t=RTE"."\"></script>\n";		
+		
 		$rte=new RichTextEditor();
 		$rte->Name="RTE_Post";
 		$rte->Width = "100%";
@@ -361,7 +361,7 @@ class richtexteditor_wordpress_class {
 		{
 			$rte->Width = "775px";
 		}
-
+		
 		$rte_width = get_option('RTE_Admin_Width');
 		if($rte_width!=null && strlen($rte_width)>0)
 		{
@@ -384,7 +384,7 @@ class richtexteditor_wordpress_class {
 			}
 			$rte->Height = $rte_height;
 		}
-
+		
 		$rte_site_skin = get_option('RTE_Admin_Skin');
 		$rte_site_toolbar = get_option('RTE_Admin_Toolbar');
 		if($rte_site_skin!="")
@@ -393,7 +393,7 @@ class richtexteditor_wordpress_class {
 			$rte->Toolbar = $rte_site_toolbar;
 		$rte_language = get_option('RTE_Language');
 		$rte_enterkeytag = get_option('RTE_EnterKeyTag');
-		$rte_urltype = get_option('RTE_UrlType');
+		$rte_urltype = get_option('RTE_UrlType');		
 		$rte_textdirction = get_option('RTE_TextDirection');
 		$rte_contentcss = get_option('RTE_ContentCss');
 		$rte_editorbodystyle = get_option('RTE_EditorBodyStyle');
@@ -409,7 +409,7 @@ class richtexteditor_wordpress_class {
 			$rte->ContentCss = $rte_contentcss;
 		if($rte_editorbodystyle!="")
 			$rte->EditorBodyStyle = $rte_editorbodystyle;
-
+		
 		$rtesecurl = "name=".$rte->Name;
 		if (get_option('RTE_GalleryPath') != '')
 		{
@@ -437,9 +437,9 @@ class richtexteditor_wordpress_class {
 		}
 		if($rtesecurl != "")
 			$rtesecurl = "?".$rtesecurl;
-
+		
 		$rte->AjaxPostbackUrl = $this->plugin_path . "includes/wpajaxpost.php".$rtesecurl;
-		echo "<div id='RTE_Post_Container' style='display:none;'>".$rte->GetString()."</div>\n";
+		echo "<div id='RTE_Post_Container' style='display:none;'>".$rte->GetString()."</div>\n";	
 		// changed by ken, use to replace wppagelinks.php function
 		// the internal link adds in file rte.comment.js and rte.post.js now
 		echo "<script>";
@@ -481,7 +481,7 @@ class richtexteditor_wordpress_class {
 		wp_enqueue_script('rte_editor_post', $this->plugin_path . "includes/rte.post.ready.js?t=RTE");
 		wp_enqueue_script('rte_editor_move', $this->plugin_path . "includes/rte.util.js?t=RTE");
 	}
-
+	
 	public function add_comment_editor() {
 		if (!(is_page() || is_single())) {
 			return;
@@ -493,16 +493,16 @@ class richtexteditor_wordpress_class {
 		if ( is_plugin_active('w3-total-cache/w3-total-cache.php') ) {
 			define('DONOTMINIFY', true);
 		}
-		echo "<style type='text/css'>.tbcontrol img {margin:0px!important;}
+		echo "<style type='text/css'>.tbcontrol img {margin:0px!important;} 
 		.jsml_textbox textarea{padding:0px!important;border-radius:0px!important;-webkit-border-radius:0px!important;width:100%!important; height:100%!important;}</style>\n";
-
-		echo "<script type='text/javascript' src=\"".$this->plugin_path . "includes/rte.comment.js?t=RTE"."\"></script>\n";
-
+	
+		echo "<script type='text/javascript' src=\"".$this->plugin_path . "includes/rte.comment.js?t=RTE"."\"></script>\n";		
+		
 		$rte=new RichTextEditor();
 		$rte->Name="RTE_Comment";
 		$rte->Width = "100%";
 		$rte->Toolbar = "full";
-
+		
 		$rte_width = get_option('RTE_Site_Width');
 		if($rte_width!=null && strlen($rte_width)>0)
 		{
@@ -525,7 +525,7 @@ class richtexteditor_wordpress_class {
 			}
 			$rte->Height = $rte_height;
 		}
-
+		
 		$rte_site_skin = get_option('RTE_Site_Skin');
 		$rte_site_toolbar = get_option('RTE_Site_Toolbar');
 		if($rte_site_skin!="")
@@ -534,7 +534,7 @@ class richtexteditor_wordpress_class {
 			$rte->Toolbar = $rte_site_toolbar;
 		$rte_language = get_option('RTE_Language');
 		$rte_enterkeytag = get_option('RTE_EnterKeyTag');
-		$rte_urltype = get_option('RTE_UrlType');
+		$rte_urltype = get_option('RTE_UrlType');		
 		$rte_textdirction = get_option('RTE_TextDirection');
 		$rte_contentcss = get_option('RTE_ContentCss');
 		$rte_editorbodystyle = get_option('RTE_EditorBodyStyle');
@@ -550,7 +550,7 @@ class richtexteditor_wordpress_class {
 			$rte->ContentCss = $rte_contentcss;
 		if($rte_editorbodystyle!="")
 			$rte->EditorBodyStyle = $rte_editorbodystyle;
-
+		
 		$rtesecurl = "name=".$rte->Name;
 		if (get_option('RTE_GalleryPath') != '')
 		{
@@ -578,9 +578,9 @@ class richtexteditor_wordpress_class {
 		}
 		if($rtesecurl != "")
 			$rtesecurl = "?".$rtesecurl;
-
+		
 		$rte->AjaxPostbackUrl = $this->plugin_path . "includes/wpajaxpost.php".$rtesecurl;
-		echo "<div id='RTE_Comment_Container' style='display:none;'>".$rte->GetString()."</div>\n";
+		echo "<div id='RTE_Comment_Container' style='display:none;'>".$rte->GetString()."</div>\n";	
 		// changed by ken, use to replace wppagelinks.php function
 		// the internal link adds in file rte.comment.js and rte.post.js now
 		echo "<script>";
@@ -621,9 +621,9 @@ class richtexteditor_wordpress_class {
 		wp_enqueue_script("jquery");
 		wp_enqueue_script('rte_editor_comment', $this->plugin_path . "includes/rte.comment.ready.js?t=RTE");
 		wp_enqueue_script('rte_editor_move', $this->plugin_path . "includes/rte.util.js?t=RTE");
-
+		
 	}
-
+	
 	/**
 	 * This function disables TinyMCE and sets {@link $bUseFCK} to true or false depending on which page is loaded
 	 */
@@ -635,25 +635,25 @@ class richtexteditor_wordpress_class {
 		}
 		return $in;
 	}
-
-	function admin_print_footer_scripts() {
+	
+	function admin_print_footer_scripts() {     		
 		if( $this->loading ) {
 			remove_action( 'admin_print_footer_scripts', array( '_WP_Editors', 'editor_js'), 50 );
-			remove_action( 'admin_footer', array( '_WP_Editors', 'enqueue_scripts'), 1 );
+			remove_action( 'admin_footer', array( '_WP_Editors', 'enqueue_scripts'), 1 );  
 		}
 	}
-
+	
 	function check_featured_image_capability() {
-		$uploads = wp_upload_dir();
+		$uploads = wp_upload_dir();  			
 		$domain = preg_replace( '~^(.*?//.*?)/.*$~', '$1', get_bloginfo('url' ) );
 		$wp_uploads = str_replace( $domain, '', $uploads['baseurl'] );
 
 		if( current_theme_supports('post-thumbnails') && rtrim( $wp_uploads, '/' ) == rtrim( $this->aOptions["images"], '/' ) ) {
-			$this->process_featured_images = true;
-		}
+			$this->process_featured_images = true; 
+		}	 
 	}
-
-
+	
+	
 	protected function update_options($data)
 	{
 		if (isset($_GET['page']))
@@ -673,7 +673,7 @@ class richtexteditor_wordpress_class {
 				update_option('RTE_EnterKeyTag', isset($data['RTE_EnterKeyTag']) ? $data['RTE_EnterKeyTag'] : "");
 				update_option('RTE_UrlType', isset($data['RTE_UrlType']) ? $data['RTE_UrlType'] : "");
 			}
-
+			
 			if($_GET['page'] =="rte_advance_options")
 			{
 				update_option('RTE_TextDirection', isset($data['RTE_TextDirection']) ? $data['RTE_TextDirection'] : "");
@@ -689,7 +689,7 @@ class richtexteditor_wordpress_class {
 		//if (isset($data['changes_saved']) && $data['changes_saved'] == '1')
 		//{
 		//	$this->changes_saved = true;
-		//}
+		//}		
 	}
 }
 
@@ -722,14 +722,14 @@ final class _WP_Editors {
 
 	public static function editor($content, $editor_id, $settings = array()) {
 		$set = self::parse_settings($editor_id, $settings);
-
+		
 		$rte=new RichTextEditor();
-		$rte->Name=$editor_id;
+		$rte->Name=$editor_id;		
 		if($content!=null)
 			$rte->LoadFormData(html_entity_decode($content));
 		$rte->ContentCss = get_stylesheet_directory_uri()."/style.css";
 		//$rte->Width="100%";
-
+		
 		$rte_width = get_option('RTE_Admin_Width');
 		if($rte_width!=null && strlen($rte_width)>0)
 		{
@@ -752,7 +752,7 @@ final class _WP_Editors {
 			}
 			$rte->Height = $rte_height;
 		}
-
+		
 		$rte_admin_skin = get_option('RTE_Admin_Skin');
 		$rte_admin_toolbar = get_option('RTE_Admin_Toolbar');
 		if($rte_admin_skin!=null && strlen($rte_admin_skin)>0)
@@ -765,7 +765,7 @@ final class _WP_Editors {
 		}
 		$rte_language = get_option('RTE_Language');
 		$rte_enterkeytag = get_option('RTE_EnterKeyTag');
-		$rte_urltype = get_option('RTE_UrlType');
+		$rte_urltype = get_option('RTE_UrlType');		
 		$rte_textdirction = get_option('RTE_TextDirection');
 		$rte_contentcss = get_option('RTE_ContentCss');
 		$rte_editorbodystyle = get_option('RTE_EditorBodyStyle');
@@ -781,7 +781,7 @@ final class _WP_Editors {
 			$rte->ContentCss = $rte_contentcss;
 		if($rte_editorbodystyle!="")
 			$rte->EditorBodyStyle = $rte_editorbodystyle;
-
+		
 		$rtesecurl = "name=".$rte->Name;
 		if (get_option('RTE_GalleryPath') != '')
 		{
@@ -809,7 +809,7 @@ final class _WP_Editors {
 		}
 		if($rtesecurl != "")
 			$rtesecurl = "?".$rtesecurl;
-
+			
 		$plugin_path = "";
 		if (DEFINED('WP_PLUGIN_URL')) {
 			$plugin_path = WP_PLUGIN_URL . '/' . basename(dirname(__FILE__)) . '/';
@@ -822,11 +822,11 @@ final class _WP_Editors {
 			$siteurl = str_replace('http:', 'https:', $siteurl);
 			$plugin_path = str_replace('http:', 'https:', $this->plugin_path);
 		}
-
+		
 		$rte->AjaxPostbackUrl = $plugin_path . "includes/wpajaxpost.php".$rtesecurl;
 		echo "<style type='text/css'>.jsml_textbox textarea{padding:0px!important;border-radius:0px!important;-webkit-border-radius:0px!important;width:100%!important; height:100%!important;}</style>\n";
-
-		echo "<script type='text/javascript' src=\"".$plugin_path . "includes/rte.comment.js?t=RTE"."\"></script>\n";
+	
+		echo "<script type='text/javascript' src=\"".$plugin_path . "includes/rte.comment.js?t=RTE"."\"></script>\n";	
 		echo $rte->GetString();
 		// changed by ken, use to replace wppagelinks.php function
 		// the internal link adds in file rte.comment.js and rte.post.js now
@@ -867,7 +867,7 @@ final class _WP_Editors {
 		echo "</script>";
 		wp_enqueue_script("jquery");
 		wp_enqueue_script('rte_editor_move', $plugin_path . "includes/rte.util.js?t=RTE");
-
+		
 	}
 
 	public static function wp_link_query( $args = array() ) {

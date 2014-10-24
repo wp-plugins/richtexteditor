@@ -22,11 +22,11 @@ function rteeditor_init()
 	if( $GLOBALS['wp_version'] > 2.9 ) {
 	  add_action( 'init', array( &$rte_editor, 'check_featured_image_capability' ), 999 );
 	}
-
+	
 	if(is_admin())
-	{
+	{		
 		add_action('admin_menu', array(&$rte_editor, 'add_option_page'));
-
+		
 		if( $GLOBALS['wp_version'] > 2.9 && $GLOBALS['wp_version'] < 3.3 ) {
 			add_action('admin_print_scripts', array(&$rte_editor, 'add_post_editor'));
 		}
