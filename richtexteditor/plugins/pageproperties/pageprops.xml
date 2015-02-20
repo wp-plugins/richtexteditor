@@ -147,12 +147,13 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 
 
 				<panel dock="left" width="104" />
-				<button dock="left" text="@STYLES">
+				<button dock="left" text="@STYLES" css_text="padding:0 10px">
 					<attach name="click">
 						<![CDATA[
 						var newoption={}
 						newoption.width=480;
 						newoption.height=320;
+                  
 						newoption.targetnode=option.targetnode;
 						newoption.ondialogload=function(dialog)
 						{

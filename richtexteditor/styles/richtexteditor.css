@@ -1,8 +1,14 @@
-﻿.jsml_textbox input,.jsml_textbox textarea,button.jsml_button,.jsml_dropdown select,fieldset
+﻿.jsml_textbox input,.jsml_textbox textarea,button.jsml_button,.jsml_dropdown select
 {
 	color: windowtext;
-	font-family:"Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
-	font-size:11px;
+	font-family:"Segoe UI",Arial,sans-serif;
+	font-size:12px;
+}
+fieldset
+{
+	color: windowtext;
+	font-family:"Segoe UI",Arial,sans-serif;
+	font-size:12px;
 }
 
 .jsml_textbox input,.jsml_textbox textarea
@@ -13,20 +19,20 @@
 .jsml_button
 {
 	color: windowtext;
-	font-family: Tahoma, Verdana, Arial, sans-serif;
-	font-size: 11px;
+	font-family: "Segoe UI",Arial,sans-serif;
+	font-size: 12px!important;
 }
 .jsml_label, .menuitemlabel
 {
-	color: windowtext;
-	font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
-	font-size: 11px;
+	color: black;
+	font-family: "Segoe UI",Arial,sans-serif;
+	font-size: 12px!important;
 }
 .jsml_dialogskin .jsml_label
 {
-	color: windowtext;
-	font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
-	font-size: 12px;
+	color: black;
+	font-family: "Segoe UI",Arial,sans-serif;
+	font-size: 12px!important;
 }
 
 
@@ -136,7 +142,7 @@ IE6 .tbcontrol ,IE6  .splitbtnsplit ,IE6  .dropdownsplit ,IE6  .menuitem ,IE6 .m
 	background-image:url(images/formbn.gif);
 	background-repeat:repeat-x;
 	background-color:#efefef;
-	font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
+	font-family: "Segoe UI",Arial,sans-serif;
 	font-size: 11px;
 }
 
@@ -144,14 +150,14 @@ IE6 .tbcontrol ,IE6  .splitbtnsplit ,IE6  .dropdownsplit ,IE6  .menuitem ,IE6 .m
 .rtelinktreegroup
 {
 	padding:2px 0;
-	font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
+	font-family: "Segoe UI",Arial,sans-serif;
 	font-size: 11px;
 }
 .rtelinktreeitem
 {
 	cursor:pointer;
 	text-decoration:underline;
-	font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
+	font-family: "Segoe UI",Arial,sans-serif;
 	font-size: 11px;
 	padding:2px 0;
 }

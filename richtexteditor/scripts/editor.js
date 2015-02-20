@@ -1816,7 +1816,7 @@ $rte.Editor=$rte.Core._extends(function(base,type){
 		}
 		this.SelectControl(tag);
 		
-		var option={width:640,height:420,targetnode:tag,anchor:anchor,oktext:oktext};
+		var option={width:650,height:420,targetnode:tag,anchor:anchor,oktext:oktext};
 		
 		this.ShowTagDialog(this.BuildDialogUrl("insertdocument.xml"),option,sp,this.delegate(function()
 		{

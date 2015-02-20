@@ -1,8 +1,8 @@
 body,input,textarea,button,select,fieldset,table
 {
 	color: windowtext;
-	font-family:"Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
-	font-size:11px;
+	font-family:"Segoe UI",Arial,sans-serif;
+	font-size:12px;
 }
 
 table, textarea
@@ -17,21 +17,12 @@ button
 
 .formbutton{
 	cursor:pointer;
-	border:outset 1px #666;
-	background:#999;
-	color:#222;
 	padding: 1px 10px;
-	height: 21px;
-	background:url(../images/formbn.gif) repeat-x left top;
 }
 #uploader input {
 	cursor:pointer;
-	border:outset 1px #666;
-	background:#999;
-	color:#222;
 	padding: 1px 10px;
 	height: 21px;
-	background:url(../images/formbn.gif) repeat-x left top;
 	vertical-align:top;
 }
 #uploader
@@ -56,11 +47,15 @@ fieldset
 
 .normal
 {
-	color: windowtext; font:normal 11px Tahoma; 
+	color: windowtext; 
+	font-family:"Segoe UI",Arial,sans-serif;
+	font-size:11px;
 }
 .sortable
 {
-	color: windowtext; font:normal 11px Tahoma; 
+	color: windowtext; 
+	font-family:"Segoe UI",Arial,sans-serif;
+	font-size:11px;
 }
 
 body
@@ -86,9 +81,11 @@ body
 	padding: 4px 12px 5px 5px;
 	display: block;
 	cursor: pointer;
-	font:normal 11px Tahoma;
+	font-family:"Segoe UI",Arial,sans-serif;
+	font-size:11px;
 	line-height: 120%;
-	color: #333;
+	color: #333;outline: none;
+	font-weight:normal;
 }
 .buttons a img
 {
@@ -136,7 +133,8 @@ body
 	height:150px;
 	margin-top:7px;
 	background-color: #ffffff;
-	font:normal 11px Tahoma;
+	font-family:"Segoe UI",Arial,sans-serif;
+	font-size:11px;
     border: #dddddd 1px solid;	
 }
 
@@ -157,14 +155,16 @@ body
 }
 .filelistHeadCol A
 {
-	font:normal 11px Tahoma; 
+	font-family:"Segoe UI",Arial,sans-serif;
+	font-size:11px;
 /*	cursor: default; */
 	color: windowtext;
 }
 
 a.filelistHeadCol:visited, a.filelistHeadCol:link /* Font used for links in the navigation menu */
 {
-	font:normal 11px Tahoma;
+	font-family:"Segoe UI",Arial,sans-serif;
+	font-size:11px;
 	color: #ffffff;
     text-decoration: none; 
 }
@@ -172,7 +172,8 @@ a.filelistHeadCol:visited, a.filelistHeadCol:link /* Font used for links in the 
 a.filelistHeadCol:Hover /* Font used for hovering over a link in the navigation menu */
 {
     color: #FF3300;
-	font:normal 11px Tahoma; 
+	font-family:"Segoe UI",Arial,sans-serif;
+	font-size:11px;
 }
 
 #container {padding:10px;margin:0;text-align:center; background:#eeeeee;}
@@ -188,7 +189,8 @@ a.filelistHeadCol:Hover /* Font used for hovering over a link in the navigation 
 }
 
 .tab-pane-control .tab-row .tab {
-	font:			normal 11px Tahoma;
+	font-family:"Segoe UI",Arial,sans-serif;
+	font-size:11px;
 	display:		inline;
 	margin:			1px -2px 1px 2px;
 	float:			left;
@@ -216,9 +218,11 @@ a.filelistHeadCol:Hover /* Font used for hovering over a link in the navigation 
 }
 
 .tab-pane-control .tab-row .tab a {
-	font:				normal 11px Tahoma;
+	font-family:"Segoe UI",Arial,sans-serif;
+	font-size:11px;
+	font-weight:normal;
 	color:				black;
-	text-decoration:	none;
+	text-decoration:	none;outline: none;
 }
 
 .tab-pane-control .tab-row .hover a {
