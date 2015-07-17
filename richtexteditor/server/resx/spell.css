@@ -1,6 +1,6 @@
 body, a, input, option, select, table, tr, table
 {
-	font:normal 11px Tahoma;
+	font:normal 11px sans-serif, arial;
 }
 body {
 	background-color: #eeeeee;

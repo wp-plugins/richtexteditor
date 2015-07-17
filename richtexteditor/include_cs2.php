@@ -99,7 +99,7 @@ class CuteSoftLibrary
 		if(substr($_x19,$_x15-1,1)=="/")
 			return substr($_x19,0,$_x15-1)."/$_x17";
 		// for the condtion "/demo/index.php"
-		$_x20=dirname($_x19);
+		$_x20=str_replace("\\","/",dirname($_x19));
 		if($_x20=="/")
 			return "/$_x17";
 		return $_x20."/$_x17";

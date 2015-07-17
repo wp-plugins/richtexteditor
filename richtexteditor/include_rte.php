@@ -4,6 +4,9 @@
 
 error_reporting(E_ALL ^ E_NOTICE);
 
+if(PhpUploader_GetNamespace()!="RTE")
+	throw(new Exception("Uploader Namespace Error"));
+
 if(!@$_SESSION)session_start();
 
 
@@ -259,7 +262,7 @@ class RichTextEditor extends CuteSoftLibrary
 		$this->Uploader->ManualStartUpload=true;
 		$this->Uploader->MultipleFilesUpload=true;
 		$this->Uploader->AllowedFileExtensions="";	//,bmp
-		$this->RTEClient=dirname(dirname(dirname($this->Uploader->ResourceDirectory)))."/";
+		$this->RTEClient=str_replace("\\","/",dirname(dirname(dirname($this->Uploader->ResourceDirectory)))."/");
 		$this->Uploader->LicenseUrl=$this->RTEClient."load.php?type=license&_temp=".time();
 	}
 	
@@ -1825,15 +1828,15 @@ class RTEWebFileProvider
 			throw (new Exception($_x23 . " does not exist"));
 
 		$_x57=filesize($_x145);
-		$_x147=get_magic_quotes_runtime();
-		set_magic_quotes_runtime(0);
+		//$_x147=get_magic_quotes_runtime();
+		//set_magic_quotes_runtime(0);
 		$_x148="rb";
 		if($_x132)
 			$_x148="rt";
 		$_x149=fopen($_x145,$_x148);
 		$_x133=fread($_x149,$_x57);
 		fclose($_x149);
-		set_magic_quotes_runtime($_x147);
+		//set_magic_quotes_runtime($_x147);
 		return $_x133;
 	}
 	

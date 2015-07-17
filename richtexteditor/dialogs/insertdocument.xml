@@ -185,8 +185,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 		<panel dock="left" width="4" />
 		<panel jsml-base="rteproptextbox" dock="left" propname="accesskey"  width="60"/>
 		<panel dock="left" width="8" />
-		<label dock="left" vertical_align="middle" text="@TABINDEX|:" text_align="right" width="50"/>
-		<panel jsml-base="rteproptextbox" dock="left" propname="tabindex"  width="60"/>
+      <label dock="left" vertical_align="middle" text="@TABINDEX|:" text_align="right" width="50"/>
+      <panel jsml-base="rteproptextbox" dock="left" propname="tabindex"  width="30"/>
 		<panel dock="left" width="8" />
 		<panel dock="left" jsml-base="rtepropcheckbox" propname="rel" truestring="nofollow" falsestring="" jsml-local="cbnofollow" />
 		<label dock="left" vertical_align="middle" width="32" text="@NOFOLLOW" unselectable="true">

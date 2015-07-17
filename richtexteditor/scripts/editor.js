@@ -864,6 +864,12 @@ $rte.Editor=$rte.Core._extends(function(base,type){
 				+"<img src='"+config.folder+"images/"+config.loader_loadingimage+"'/></td></tr></table>";
 		}
 
+		if (jsml.msie&&this.GetWindow().document.selection.type=="Control") {
+			var coll = this.GetWindow().document.selection.createRange();
+			if (coll.length && coll.remove) coll.remove(0);
+			coll.select();
+		}
+		
 		var urlhandler=this.delegate(function(res,err)
 		{
 			if(dialog._jsml_disposed)return;
@@ -1162,8 +1168,7 @@ $rte.Editor=$rte.Core._extends(function(base,type){
 		}
 	}
 	
-	this.ExecUICommand=function(element,cmd,arg0,arg1,arg2)
-	{
+	this.ExecUICommand = function (element, cmd, arg0, arg1, arg2) {
 		var evt=jsml.find_event();
 		if(evt&&evt.ctrlKey&&evt.shiftKey&&evt.altKey)
 		{

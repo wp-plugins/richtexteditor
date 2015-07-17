@@ -55,7 +55,7 @@
 	background-color:#c1d9f1;
 	background-image:url(../../styles/images/rblabel_blue.png);
 	background-repeat:repeat-x;
-	font-family:tahoma!important;
+	font-family:sans-serif!important;
 	font-size:11px!important;
 	border-left:solid 1px #d2eaf2;
 	border-bottom-left-radius:3px;
@@ -159,7 +159,7 @@
 {
 	color:#333333;
 	background-color:#d2d6e1;
-	font-family:tahoma!important;
+	font-family:sans-serif!important;
 	font-size:11px!important;
 	border-left:solid 1px #e3e7f2;
 	border-bottom-left-radius:3px;
@@ -245,7 +245,7 @@
 {
 	color:#666d7c;
 	background-color:transparent;
-	font-family:Tahoma!important;
+	font-family:sans-serif!important;
 	font-size:11px!important;
 }
 

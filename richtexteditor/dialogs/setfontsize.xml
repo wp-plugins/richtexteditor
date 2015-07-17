@@ -4,7 +4,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 
 	<htmlcontrol jsml-class="setfontsizedialogitem" dock="top" overflow="visible" vertical_align="middle" margin="0" padding="0" border_width="1" border_color="transparent" cursor="pointer" unselectable="true">
 		<initialize>
-			self._estyle.fontFamily='"Segoe UI","Lucida Grande", Tahoma, Verdana, Arial, sans-serif';
+			self._estyle.fontFamily='sans-serif,arial';
 
 			<![CDATA[
 			if(!editor._config.preview_disabletooltip&&!editor._config.preview_disablefontsize)
@@ -50,7 +50,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 				{
 					var item=jsml.class_create_instance("setfontsizedialogitem");
 					item.set_text(sizelist[i]);
-					item.set_html('<div style="padding:0 10px;font-size:'+sizelist[i]+';">'+sizelist[i]+'</div>');
+					item.set_html('<div style="margin:0 10px;line-height:'+sizelist[i]+'!important;font-size:'+sizelist[i]+';">'+sizelist[i]+'</div>');
 					self.append_child(item);
 				}
 				]]>

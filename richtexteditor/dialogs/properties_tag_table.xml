@@ -7,9 +7,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 
 		<groupbox text="@LAYOUT" dock="top" overflow="visible" margin="3">
 			<panel margin="7,3,1,3" height="18" dock="top">
-				<label dock="left" width="70" text="@ROWS|:" vertical_align="middle" text_align="right" />
+				<label dock="left" width="90" text="@ROWS|:" vertical_align="middle" text_align="right" />
 				<panel dock="left" width="4" />
-				<panel dock="left" width="65" jsml-base="rtepropnumupdown" propname="rows" min_value="1">
+				<panel dock="left" width="70" jsml-base="rtepropnumupdown" propname="rows" min_value="1">
 					<method name="get_node_value">
 						var node=self.find_node();
 						return editor.ExecTableLogic(node,"getrowcount");
@@ -20,8 +20,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 					</method>
 				</panel>
 				<panel dock="left" width="30" />
-				<label dock="left" width="60" text="@COLS|:" vertical_align="middle"/>
-				<panel dock="left" width="65" jsml-base="rtepropnumupdown" propname="cols" min_value="1">
+				<label dock="left" width="70" text="@COLS|:" vertical_align="middle"/>
+				<panel dock="left" width="70" jsml-base="rtepropnumupdown" propname="cols" min_value="1">
 					<method name="get_node_value">
 						var node=self.find_node();
 						return editor.ExecTableLogic(node,"getcolcount");
@@ -33,9 +33,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 				</panel>
 			</panel>
 			<panel margin="7,3,1,3" height="18" dock="top">
-				<label dock="left" width="70" text="@CELLSPACING|:" vertical_align="middle" text_align="right" />
+				<label dock="left" width="90" text="@CELLSPACING|:" vertical_align="middle" text_align="right" />
 				<panel dock="left" width="4" />
-				<panel dock="left" width="65" jsml-base="rtepropnumupdown" propname="cellspacing" min_value="0" />
+				<panel dock="left" width="70" jsml-base="rtepropnumupdown" propname="cellspacing" min_value="0" />
 				<panel dock="left" width="25" />
 				<checkbox dock="left" jsml-local="cbusewidth" checked="1">
 					<attach name="change">
@@ -45,7 +45,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 						]]>
 					</attach>
 				</checkbox>
-				<label dock="left" vertical_align="middle" width="45" text="@WIDTH|:" unselectable="true">
+				<label dock="left" vertical_align="middle" width="55" text="@WIDTH|:" unselectable="true">
 					<attach name="click,dblclick">
 						cbusewidth.set_checked(!cbusewidth.get_checked());
 					</attach>
@@ -58,9 +58,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 				</initialize>
 			</panel>
 			<panel margin="7,3,1,3" height="18" dock="top">
-				<label dock="left" width="70" text="@CELLPADDING|:" vertical_align="middle" text_align="right" />
+				<label dock="left" width="90" text="@CELLPADDING|:" vertical_align="middle" text_align="right" />
 				<panel dock="left" width="4" />
-				<panel dock="left" width="65" jsml-base="rtepropnumupdown" propname="cellpadding" min_value="0" />
+				<panel dock="left" width="70" jsml-base="rtepropnumupdown" propname="cellpadding" min_value="0" />
 				<panel dock="left" width="25" />
 				<checkbox dock="left" jsml-local="cbuseheight" checked="1">
 					<attach name="change">
@@ -70,7 +70,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 						]]>
 					</attach>
 				</checkbox>
-				<label dock="left" vertical_align="middle" width="45" text="@HEIGHT|:" unselectable="true">
+				<label dock="left" vertical_align="middle" width="55" text="@HEIGHT|:" unselectable="true">
 					<attach name="click,dblclick">
 						cbuseheight.set_checked(!cbuseheight.get_checked());
 					</attach>
@@ -83,16 +83,16 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 				</initialize>
 			</panel>
 			<panel margin="7,3,8,3" height="18" dock="top">
-				<label dock="left" vertical_align="middle" text="@FLOAT|:"  width="70" text_align="right"/>
+				<label dock="left" vertical_align="middle" text="@FLOAT|:"  width="90" text_align="right"/>
 				<panel dock="left" width="4" />
-				<panel dock="left" jsml-base="rtepropdropdown" width="65" propname="style:float">
+				<panel dock="left" jsml-base="rtepropdropdown" width="70" propname="style:float">
 					<listitem value="" text="@NOTSET" />
 					<listitem value="left" text="@LEFT" />
 					<listitem value="right" text="@RIGHT" />
 					<listitem value="right" text="@NONE" />
 				</panel>
 				<panel dock="left" width="30" />
-				<label dock="left" vertical_align="middle" text="@ALIGN|:" width="60"/>
+				<label dock="left" vertical_align="middle" text="@ALIGN|:" width="70"/>
 				<panel dock="left" jsml-base="rtepropdropdown" propname="align" width="67">
 					<listitem value="" text="@NOTSET" />
 					<listitem value="left" text="@LEFT" />
@@ -100,7 +100,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 					<listitem value="right" text="@RIGHT" />
 				</panel>
 				<panel dock="left" width="25" />
-				<label dock="left" vertical_align="middle" text="@RULES|:" width="85"/>
+				<label dock="left" vertical_align="middle" text="@RULES|:" width="55"/>
 				<panel dock="left" jsml-base="rtepropdropdown" propname="rules">
 					<listitem value="" text="@NOTSET" />
 					<listitem value="all" text="all" />
@@ -116,7 +116,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 				<panel dock="left" width="4" />
 				<panel dock="left" width="65" jsml-base="rtepropnumupdown" propname="border" min_value="0" />
 				<panel dock="left" width="30" />
-				<label dock="left" vertical_align="middle" text="@COLOR|:" width="60"/>
+				<label dock="left" vertical_align="middle" text="@COLOR|:" width="45"/>
 				<panel dock="left" jsml-base="rtepropcolorbox" propname="bordercolor" width="75" />
 				<panel dock="left" width="12" />
 				<panel dock="left" jsml-base="rtepropcheckbox" propname="style:border-collapse" truestring="collapse" falsestring="" jsml-local="cbcollapse" />
@@ -133,7 +133,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 				<panel dock="left" width="4" />
 				<panel jsml-base="rteproptextbox" dock="left" propname="class"  width="65" />
 				<panel dock="left" width="30" />
-				<label dock="left" vertical_align="middle" text="ID:" width="60"/>
+				<label dock="left" vertical_align="middle" text="ID:" width="45"/>
 				<panel jsml-base="rteproptextbox" dock="left" propname="id" width="75" />
 				<panel dock="left" width="15" />
 				<label dock="left" vertical_align="middle" text="@BACKGROUNDCOLOR|:" width="85"/>

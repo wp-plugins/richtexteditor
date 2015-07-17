@@ -136,7 +136,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 			</panel>
 
 			<panel dock="fill" >
-				<textbox jsml-member="codebox" text_mode="multipleline" dock="fill" back_color="white" border_color="white" border_width="5,0,5,5" font="normal 12px courier new" >
+				<textbox jsml-member="codebox" text_mode="multipleline" dock="fill" back_color="white" border_color="white" border_width="5,0,5,5" font="normal 12px sans-serif" >
 					<attach name="editor_ready" arguments="jevent,arg0">
 						self._rteinstance=arg0;
 					</attach>

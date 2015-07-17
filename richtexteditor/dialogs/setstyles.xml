@@ -4,7 +4,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 
 	<htmlcontrol jsml-class="setstylesdialogitem" dock="top" overflow="visible" font_size="11px" vertical_align="middle" margin="2" padding="2,2,2,4" border_width="1" border_color="transparent" cursor="pointer" unselectable="true">
 		<initialize>
-			self._estyle.fontFamily='"Segoe UI","Lucida Grande", Tahoma, Verdana, Arial, sans-serif';
+			self._estyle.fontFamily='sans-serif,arial';
 		</initialize>
 		<attach name="mousehover" arguments="je,e">
 			self.set_border_color('#DCAC6C');

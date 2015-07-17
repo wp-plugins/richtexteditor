@@ -24,6 +24,8 @@ else if($type=="script")
 {
 	header("Content-Type: application/oct-stream");
 	
+	readfile(dirname($scriptfile)."/resources/uploader.js");
+	
 	?>
 	
 	if(!window.CuteWebUI_AjaxUploader_OnPostback)
@@ -42,7 +44,7 @@ else if($type=="script")
 	
 	<?php
 	
-	readfile(dirname($scriptfile)."/resources/uploader.js");
+	
 }
 else if($type=="license")
 {
@@ -50,11 +52,11 @@ else if($type=="license")
 	$licensefile=dirname($scriptfile)."/license/phpuploader.lic";
 	$size=filesize($licensefile);
 	$mqr=get_magic_quotes_runtime();
-	set_magic_quotes_runtime(0);
+	//set_magic_quotes_runtime(0);
 	$handle=fopen($licensefile,"rb");
 	$data=fread($handle,$size);
 	fclose($handle);
-	set_magic_quotes_runtime($mqr);
+	//set_magic_quotes_runtime($mqr);
 	echo(bin2hex($data));
 }
 else if($type=="serverip")
@@ -68,11 +70,11 @@ else
 {
 	$file=$_GET["file"];
 	$lower=strtolower($file);
-	if($lower=="silverlight.xap")
+	if($lower=="silverlight.xap"||$lower=="uploader.swf"||$lower=="uploader10.swf")
 	{
 		//the server may do not understand the xap file
 		//show just render it to client directly.
-		$filepath=dirname($scriptfile)."/resources/silverlight.xap";
+		$filepath=dirname($scriptfile)."/resources/$lower";
 		header("Content-Type: application/oct-stream");
 		header("Content-Length: " . filesize($filepath) );
 		readfile($filepath);

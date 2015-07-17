@@ -4,7 +4,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 
 	<htmlcontrol jsml-class="zoomlistitem" dock="top" overflow="visible" vertical_align="middle" margin="0" padding="0" border_width="1" border_color="transparent" cursor="pointer" unselectable="true">
 		<initialize>
-			self._estyle.fontFamily='"Segoe UI","Lucida Grande", Tahoma, Verdana, Arial, sans-serif';
+			self._estyle.fontFamily='sans-serif,arial';
 		</initialize>
 
 		<attach name="mousehover" arguments="je,e">

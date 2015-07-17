@@ -143,7 +143,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 
 		<groupbox text="@LAYOUT" dock="top" overflow="visible" margin="3">
 			<panel margin="7,3,1,3" height="18" dock="top">
-				<label dock="left" width="70" text="@CELLSPACING|:" vertical_align="middle" text_align="right" />
+				<label dock="left" width="80" text="@CELLSPACING|:" vertical_align="middle" text_align="right" />
 				<panel dock="left" width="4" />
 				<panel dock="left" width="65" jsml-base="rtepropnumupdown" propname="cellspacing" min_value="0" />
 				<panel dock="left" width="25" />
@@ -163,7 +163,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 				<panel jsml-base="rtepropunitbox" jsml-local="tbwidth" width="65" dock="left" propname="style:width" />
 			</panel>
 			<panel margin="7,3,1,3" height="18" dock="top">
-				<label dock="left" width="70" text="@CELLPADDING|:" vertical_align="middle" text_align="right" />
+				<label dock="left" width="80" text="@CELLPADDING|:" vertical_align="middle" text_align="right" />
 				<panel dock="left" width="4" />
 				<panel dock="left" width="65" jsml-base="rtepropnumupdown" propname="cellpadding" min_value="0" />
 				<panel dock="left" width="25" />
@@ -188,9 +188,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 				</initialize>
 			</panel>
 			<panel margin="7,3,8,3" height="18" dock="top">
-				<label dock="left" vertical_align="middle" text="@FLOAT|:"  width="70" text_align="right"/>
+				<label dock="left" vertical_align="middle" text="@FLOAT|:"  width="80" text_align="right"/>
 				<panel dock="left" width="4" />
-				<panel dock="left" jsml-base="rtepropdropdown" width="65" propname="style:float">
+				<panel dock="left" jsml-base="rtepropdropdown" width="75" propname="style:float">
 					<listitem value="" text="@NOTSET" />
 					<listitem value="left" text="@LEFT" />
 					<listitem value="right" text="@RIGHT" />

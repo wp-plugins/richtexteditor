@@ -9,7 +9,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 			hc.jsml_append_xmldata(value);
 		</method>
 		<initialize>
-			self._estyle.fontFamily='"Segoe UI","Lucida Grande", Tahoma, Verdana, Arial, sans-serif';
+			self._estyle.fontFamily='sans-serif,arial';
 		</initialize>
 		<attach name="mousehover">
 			self.set_back_color("#ffdc63");

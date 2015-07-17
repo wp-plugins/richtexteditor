@@ -1,7 +1,7 @@
 body,input,textarea,button,select,fieldset,table
 {
 	color: windowtext;
-	font-family:"Segoe UI",Arial,sans-serif;
+	font-family:sans-serif,arial;
 	font-size:12px;
 }
 
@@ -48,13 +48,13 @@ fieldset
 .normal
 {
 	color: windowtext; 
-	font-family:"Segoe UI",Arial,sans-serif;
+	font-family:sans-serif,arial;
 	font-size:11px;
 }
 .sortable
 {
 	color: windowtext; 
-	font-family:"Segoe UI",Arial,sans-serif;
+	font-family:sans-serif,arial;
 	font-size:11px;
 }
 
@@ -81,7 +81,7 @@ body
 	padding: 4px 12px 5px 5px;
 	display: block;
 	cursor: pointer;
-	font-family:"Segoe UI",Arial,sans-serif;
+	font-family:sans-serif,arial;
 	font-size:11px;
 	line-height: 120%;
 	color: #333;outline: none;
@@ -133,7 +133,7 @@ body
 	height:150px;
 	margin-top:7px;
 	background-color: #ffffff;
-	font-family:"Segoe UI",Arial,sans-serif;
+	font-family:sans-serif,arial;
 	font-size:11px;
     border: #dddddd 1px solid;	
 }
@@ -155,7 +155,7 @@ body
 }
 .filelistHeadCol A
 {
-	font-family:"Segoe UI",Arial,sans-serif;
+	font-family:sans-serif,arial;
 	font-size:11px;
 /*	cursor: default; */
 	color: windowtext;
@@ -163,7 +163,7 @@ body
 
 a.filelistHeadCol:visited, a.filelistHeadCol:link /* Font used for links in the navigation menu */
 {
-	font-family:"Segoe UI",Arial,sans-serif;
+	font-family:sans-serif,arial;
 	font-size:11px;
 	color: #ffffff;
     text-decoration: none; 
@@ -172,7 +172,7 @@ a.filelistHeadCol:visited, a.filelistHeadCol:link /* Font used for links in the 
 a.filelistHeadCol:Hover /* Font used for hovering over a link in the navigation menu */
 {
     color: #FF3300;
-	font-family:"Segoe UI",Arial,sans-serif;
+	font-family:sans-serif,arial;
 	font-size:11px;
 }
 
@@ -189,7 +189,7 @@ a.filelistHeadCol:Hover /* Font used for hovering over a link in the navigation 
 }
 
 .tab-pane-control .tab-row .tab {
-	font-family:"Segoe UI",Arial,sans-serif;
+	font-family:sans-serif,arial;
 	font-size:11px;
 	display:		inline;
 	margin:			1px -2px 1px 2px;
@@ -218,7 +218,7 @@ a.filelistHeadCol:Hover /* Font used for hovering over a link in the navigation 
 }
 
 .tab-pane-control .tab-row .tab a {
-	font-family:"Segoe UI",Arial,sans-serif;
+	font-family:sans-serif,arial;
 	font-size:11px;
 	font-weight:normal;
 	color:				black;

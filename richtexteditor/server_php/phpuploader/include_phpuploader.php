@@ -2,7 +2,31 @@
 
 $PhpUploader_FSEncoding="ISO-8859-1//TRANSLIT";
 
+//$PhpUploader_FSEncoding="gbk//TRANSLIT";
+
 $PhpUploader_InternalEncoding="utf-8";
+
+function PhpUploader_ConvTo($str)
+{
+	global $PhpUploader_FSEncoding;
+	global $PhpUploader_InternalEncoding;
+	if($PhpUploader_FSEncoding==$PhpUploader_InternalEncoding)
+		return $str;
+	return iconv($PhpUploader_InternalEncoding,$PhpUploader_FSEncoding,$str);
+}
+function PhpUploader_ConvFrom($str)
+{
+	global $PhpUploader_FSEncoding;
+	global $PhpUploader_InternalEncoding;
+	if($PhpUploader_FSEncoding==$PhpUploader_InternalEncoding)
+		return $str;
+	return iconv($PhpUploader_FSEncoding,$PhpUploader_InternalEncoding,$str);
+}
+function PhpUploader_ConvFix($str)
+{
+	//return PhpUploader_ConvFrom(PhpUploader_ConvTo($str));
+	return $str;
+}
 
 error_reporting(E_ALL ^ E_NOTICE);
 
@@ -54,7 +78,6 @@ function PhpUploader_Unescape($str)
 	global $PhpUploader_InternalEncoding;
 	
     $str = rawurldecode($str); 
-    //throw(new Exception( $str ));
     preg_match_all("/(%u[0-9A-Fa-f]{4}|%|[^%]+)/",$str,$r); 
     $ar = $r[0]; 
     foreach($ar as $k=>$v)
@@ -71,8 +94,8 @@ function PhpUploader_Unescape($str)
             }
         }
     }
-    //throw(new Exception( join("",$ar) ));
-    return join("",$ar); 
+    $str=join("",$ar); 
+	return PhpUploader_ConvFix($str);
 } 
 
 function PhpUploader_GetQSD($name)
@@ -93,7 +116,7 @@ function PhpUploader_GetFileName($file)
 			$str="uploadedfile"+$str;
 		return $str;
 	}
-	return $file["name"];
+	return PhpUploader_Unescape($file["name"]);
 }
 
 function PhpUploader_GetBaseName($path)
@@ -119,7 +142,7 @@ function PhpUploader_MoveUploadedFile($_file,$_line,$src,$dst)
 		throw(new Exception("File not exists : $src , at $_file line $_line"));
 		
 	$er=error_reporting(0);
-	$re=move_uploaded_file(iconv($PhpUploader_InternalEncoding,$PhpUploader_FSEncoding,$src),iconv($PhpUploader_InternalEncoding,$PhpUploader_FSEncoding,$dst));
+	$re=move_uploaded_file(PhpUploader_ConvTo($src),PhpUploader_ConvTo($dst));
 	error_reporting($er);
 	if($re===false)
 	{
@@ -134,7 +157,7 @@ function PhpUploader_FileExists($path)
 	global $PhpUploader_FSEncoding;
 	global $PhpUploader_InternalEncoding;
 	
-	return file_exists(iconv($PhpUploader_InternalEncoding,$PhpUploader_FSEncoding,$path));
+	return file_exists(PhpUploader_ConvTo($path));
 }
 function PhpUploader_GetFiles($_file,$_line,$pattern)
 {
@@ -142,14 +165,14 @@ function PhpUploader_GetFiles($_file,$_line,$pattern)
 	global $PhpUploader_InternalEncoding;
 	
 	$er=error_reporting(0);
-	$re=glob(iconv($PhpUploader_InternalEncoding,$PhpUploader_FSEncoding,$pattern));
+	$re=glob(PhpUploader_ConvTo($pattern));
 	error_reporting($er);
 	if(!$re)
 		return array();
 	$l=count($re);
 	for($i=0;$i<$l;$i++)
 	{
-		$re[$i]=iconv($PhpUploader_FSEncoding,$PhpUploader_InternalEncoding,$re[$i]);
+		$re[$i]=PhpUploader_ConvFrom($re[$i]);
 	}
 	return $re;
 }
@@ -158,9 +181,8 @@ function PhpUploader_MakeDir($_file,$_line,$dir,$flag)
 	global $PhpUploader_FSEncoding;
 	global $PhpUploader_InternalEncoding;
 	
-	$dir=iconv($PhpUploader_InternalEncoding,$PhpUploader_FSEncoding,$dir);
 	$er=error_reporting(0);
-	$re=mkdir($dir,$flag);
+	$re=mkdir(PhpUploader_ConvTo($dir),$flag);
 	error_reporting($er);
 	if($re===false)
 	{
@@ -175,7 +197,7 @@ function PhpUploader_Copy($_file,$_line,$src,$dst)
 	global $PhpUploader_InternalEncoding;
 	
 	$er=error_reporting(0);
-	$re=copy(iconv($PhpUploader_InternalEncoding,$PhpUploader_FSEncoding,$src),iconv($PhpUploader_InternalEncoding,$PhpUploader_FSEncoding,$dst));
+	$re=copy(PhpUploader_ConvTo($src),PhpUploader_ConvTo($dst));
 	error_reporting($er);
 	if($re===false)
 	{
@@ -192,7 +214,7 @@ function PhpUploader_Move($_file,$_line,$src,$dst)
 	PhpUploader_Log("Move From $src");
 	PhpUploader_Log("Move To $dst");
 	$er=error_reporting(0);
-	$re=rename(iconv($PhpUploader_InternalEncoding,$PhpUploader_FSEncoding,$src),iconv($PhpUploader_InternalEncoding,$PhpUploader_FSEncoding,$dst));
+	$re=rename(PhpUploader_ConvTo($src),PhpUploader_ConvTo($dst));
 	error_reporting($er);
 	if($re===false)
 	{
@@ -206,7 +228,7 @@ function PhpUploader_FileTime($_file,$_line,$file)
 	global $PhpUploader_FSEncoding;
 	global $PhpUploader_InternalEncoding;
 	
-	return filemtime(iconv($PhpUploader_InternalEncoding,$PhpUploader_FSEncoding,$file));
+	return filemtime(PhpUploader_ConvTo($file));
 }
 function PhpUploader_Delete($_file,$_line,$file)
 {
@@ -214,7 +236,7 @@ function PhpUploader_Delete($_file,$_line,$file)
 	global $PhpUploader_InternalEncoding;
 	
 	$er=error_reporting(0);
-	$re=unlink(iconv($PhpUploader_InternalEncoding,$PhpUploader_FSEncoding,$file));
+	$re=unlink(PhpUploader_ConvTo($file));
 	error_reporting($er);
 	if($re===false)
 	{
@@ -229,7 +251,7 @@ function PhpUploader_FileOpen($_file,$_line,$filepath,$flag)
 	global $PhpUploader_InternalEncoding;
 	
 	$er=error_reporting(0);
-	$re=fopen(iconv($PhpUploader_InternalEncoding,$PhpUploader_FSEncoding,$filepath),$flag);
+	$re=fopen(PhpUploader_ConvTo($filepath),$flag);
 	error_reporting($er);
 	if($re===false)
 	{
@@ -292,9 +314,17 @@ function PhpUploader_ParseByteSetting($val) {
 	return $val; 
 }
 
-function PhpUploader_GetSystemTempFolder()
+
+function PhpUploader_GetSysBaseTempFolder()
 {
+	$dirname=$str=dirname(__FILE__);
+	$str=preg_replace("/\/home\/([^\/]+)\/public_html\/.*/","$1",$str);
+	
+	if($str!=null&&strlen($str)>0&&$str!=$dirname)
+		return "/home/$str/tmp/";
+	
 	$str=ini_get('upload_tmp_dir');
+	
 	if($str==null||strlen($str)==0)
 	{
 		$str="/tmp";
@@ -314,6 +344,13 @@ function PhpUploader_GetSystemTempFolder()
 			}
 		}
 	}
+	return $str;
+}
+
+function PhpUploader_GetSystemTempFolder()
+{
+	$str=PhpUploader_GetSysBaseTempFolder();
+	
 	
 	if (substr($str,strlen($str)-(1))!="/")
 		$str=$str."/";
@@ -635,6 +672,7 @@ class PhpUploader
 		$code.=$this->_GenerateAttribute("ProgressCtrlID");
 		
 		$code.=$this->_GenerateAttribute("AllowedFileExtensions");
+		$code.=$this->_GenerateAttribute("AllowedFileRegExp");
 		
 		if($this->FlashUploadMode=="Partial")
 		{
@@ -699,6 +737,9 @@ class PhpUploader
 		{
 			case "AllowedFileExtensions":
 				$name="Extensions";
+				break;
+			case "AllowedFileRegExp":
+				$name="FileRegExp";
 				break;
 			case "ProgressPanelWidth":
 				$name="PanelWidth";
@@ -768,16 +809,19 @@ class PhpUploader
 	function _InternalGetFile($guid,$checkValidated)
 	{
 		$dir = $this->InternalGetTempDirectory();
-		$arr=PhpUploader_GetFiles(__FILE__,__LINE__,"$dir/*." . $guid . ".*");
+		$arr=PhpUploader_GetFiles(__FILE__,__LINE__,"$dir/*." . $guid . ".*");	//fast,but not compatible
 		if($arr==null||count($arr)==0)
-			return null;
-		if( $checkValidated && substr(PhpUploader_GetBaseName($arr[0]),0,10)!="persisted.")
+			return;
+		
+		$filepath=$arr[0];
+		
+		if( $checkValidated && substr(PhpUploader_GetBaseName($filepath),0,10)!="persisted.")
 			throw(new Exception("This file can not be validated!"));
 		$mvcfile=new PhpUploadFile();
 		$mvcfile->FileGuid=$guid;
-		$mvcfile->FilePath=str_replace("\\","/",$arr[0]);
-		$mvcfile->FileSize=filesize($arr[0]);
-		$mvcfile->FileName=substr(PhpUploader_GetBaseName($arr[0]),47,-5);//also remove suffix ".resx"
+		$mvcfile->FilePath=str_replace("\\","/",$filepath);
+		$mvcfile->FileSize=filesize($filepath);
+		$mvcfile->FileName=substr(PhpUploader_GetBaseName($filepath),47,-5);//also remove suffix ".resx"
 		return $mvcfile;
 	}
 	
@@ -849,6 +893,7 @@ class PhpUploader
 		$this->_SaveSecuritySetting("_SourceFileName");
 		$this->_SaveSecuritySetting("MaxSizeKB");
 		$this->_SaveSecuritySetting("AllowedFileExtensions");
+		$this->_SaveSecuritySetting("AllowedFileRegExp");
 		$this->_SaveSecuritySetting("SaveDirectory");
 		$this->_SaveSecuritySetting("TempDirectory");
 	}
@@ -859,6 +904,7 @@ class PhpUploader
 		$this->_LaveSecuritySetting("_SourceFileName");
 		$this->_LaveSecuritySetting("MaxSizeKB");
 		$this->_LaveSecuritySetting("AllowedFileExtensions");
+		$this->_LaveSecuritySetting("AllowedFileRegExp");
 		$this->_LaveSecuritySetting("SaveDirectory");
 		$this->_LaveSecuritySetting("TempDirectory");
 		if(!$this->_SourceFileName)
@@ -1014,6 +1060,13 @@ class PhpUploader
 			throw (new Exception("$this->Name : Session expired! Please refresh the page and try again."));
 		}
 		
+		$fre=$this->AllowedFileRegExp;
+		if($fre)
+		{
+			if(preg_replace("/$fre/","?",$filename)==$filename){
+				throw (new Exception("$filename is not allowed."));
+			}
+		}
 		
 		PhpUploader_Log("Validated : $filename , AllowedFileExtensions : $this->AllowedFileExtensions");
 	}

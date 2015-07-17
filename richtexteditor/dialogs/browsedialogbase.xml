@@ -26,7 +26,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 			}
 			var dialog=jsml.class_create_instance("floatbox");
 			var htmlc=jsml.class_create_instance("htmlcontrol");
-			htmlc.set_html("<pre style='margin:0px;padding:2px;color: windowtext;font: normal 11px tahoma, arial, verdana, sans-serif;'>"
+			htmlc.set_html("<pre style='margin:0px;padding:2px;color: windowtext;font: normal 11px sans-serif;'>"
 				+jsml.html_encode(text)+"</pre>");
 			htmlc.set_dock("fill");
 			var gbr=jsml.get_body_rect();
